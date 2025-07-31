@@ -1,0 +1,66 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Интерактивный Киоск</title>
+  <link rel="stylesheet" href="style.css" />
+   <style>
+.button-grid button,
+.footer-button button {
+  padding: 20px;
+  font-size: 20px;
+  font-weight: 600;
+  color: white;
+  background: rgba(0, 65, 85, 0.4); /* Прозрачный #004155 */
+  border: 1px solid rgba(255, 255, 255, 0.15);
+  border-radius: 16px;
+  cursor: pointer;
+  backdrop-filter: blur(10px);
+  transition: all 0.3s ease;
+  width: 100%;
+  text-align: center;
+  box-shadow: 0 8px 24px rgba(0, 0, 0, 0.25);
+}
+
+.button-grid button:hover,
+.footer-button button:hover {
+  background: rgba(0, 65, 85, 0.6); /* Тот же цвет, но менее прозрачный при наведении */
+  box-shadow: 0 0 20px rgba(0, 255, 255, 0.2); /* Светлый акцент */
+  transform: scale(1.05);
+}
+</style>
+</head>
+<body>
+  <div id="video-container">
+    <video autoplay muted loop id="bgVideo">
+      <source src="media/video.mp4" type="video/mp4" />
+    </video>
+  </div>
+
+  <div class="overlay">
+    <div class="button-grid">
+      <button class="glass-button" onclick="openSite('https://example.com/record')">Записаться на прием</button>
+      <button class="glass-button" onclick="openSite('https://example.com/personal/profile/')">Распечатать анализы</button>
+      <button class="glass-button" onclick="openSite('https://example.com/services/')">Услуги</button>
+      <button class="glass-button" onclick="openSite('https://example.com/services/')">Прайс-лист</button>
+      <button class="glass-button" onclick="openSite('https://example.com/clinic/promotions/')">Акции</button>
+      <button class="glass-button" onclick="openSite('https://example.com/clinic/reviews/')">Обратная связь</button>
+    </div>
+    <div class="footer-button">
+      <button class="glass-button" onclick="showFakeScreen('social')">Можно сделать открытие файлов</button>
+    </div>
+  </div>
+
+<div id="iframeContainer">
+    <iframe id="clinicFrame" src=""></iframe>
+    <button id="closeBtn" onclick="hideSite()">← Назад</button>
+  </div>
+
+<div id="fakeScreenContainer">
+  <img id="fakeScreen" src="" alt="Скрин">
+  <button id="closeBtn" onclick="hideClinic()">← Назад</button>
+</div>
+  <script src="script.js"></script>
+</body>
+</html>
